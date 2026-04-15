@@ -18,7 +18,7 @@ public class BaseRepository<T> {
         return emf.createEntityManager();
     }
 
-    public void Salvar(T entity) {
+    public void salvar(T entity) {
         EntityManager em = getEmf();
         try {
             em.getTransaction().begin();
