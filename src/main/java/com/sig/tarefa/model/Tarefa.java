@@ -21,7 +21,11 @@ public class Tarefa {
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
-    private String responsavel;
+
+    @ManyToOne
+    @JoinColumn(name = "responsavel_id")
+    private Responsavel responsavel;
+
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -61,11 +65,11 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public String getResponsavel() {
+    public Responsavel getResponsavel() {
         return responsavel;
     }
 
-    public void setResponsavel(String responsavel) {
+    public void setResponsavel(Responsavel responsavel) {
         this.responsavel = responsavel;
     }
 

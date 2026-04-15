@@ -7,6 +7,7 @@
 
     <persistence-unit name="tarefa_db" transaction-type="RESOURCE_LOCAL">
         <class>com.sig.tarefa.model.Tarefa</class>
+        <class>com.sig.tarefa.model.Responsavel</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
