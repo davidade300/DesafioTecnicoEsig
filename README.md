@@ -12,3 +12,9 @@
 ### TODOS
 
 - adicionar testes quando terminar os services.
+
+### Notas:
+
+- Deixei a exclusão como softDelete.
+- Pulei a documentação de algumas coisas por questão de tempo disponível para entrega do projeto. Procurei documentar
+  tudo que acho de maior relevância, seja método ou classe.

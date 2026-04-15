@@ -3,7 +3,7 @@ package com.sig.tarefa.model.enums;
 
 public enum Situacao {
     EM_ANDAMENTO("Em andamento"),
-    COMPLETO("Completo");
+    CONCLUIDA("Concluida");
 
     public final String rotulo;
 

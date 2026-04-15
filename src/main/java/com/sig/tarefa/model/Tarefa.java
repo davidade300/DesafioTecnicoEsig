@@ -35,6 +35,17 @@ public class Tarefa {
     @Column(nullable = false)
     private Situacao situacao;
 
+    @Column(nullable = false)
+    private boolean excluida;
+
+    public boolean isExcluida() {
+        return excluida;
+    }
+
+    public void setExcluida(boolean excluida) {
+        this.excluida = excluida;
+    }
+
     private LocalDate deadline;
 
     public Tarefa() {
@@ -96,4 +107,13 @@ public class Tarefa {
     public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
+
+    /**
+     * poderia ser feito no contrutor mas preferi aqui
+     */
+    @PrePersist
+    private void ativa() {
+        this.excluida = false;
+    }
+
 }

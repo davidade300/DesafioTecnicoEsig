@@ -13,8 +13,8 @@ public class ResponsavelService {
         this.repository = repository;
     }
 
-    public void salvar(Responsavel responsavel) {
-        repository.salvar(responsavel);
+    public void salvar(Responsavel r) {
+        repository.salvar(r);
     }
 
     public List<Responsavel> listarTodos() {

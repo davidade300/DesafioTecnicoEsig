@@ -50,7 +50,7 @@ public class TarefaRepository extends BaseRepository<Tarefa> {
         EntityManager em = super.getEmf();
         try {
             StringBuilder sb = new StringBuilder();
-            sb.append("SELECT e FROM Tarefa e WHERE 1 = 1"); // Where 1==1 para retornar todas as tarefas caso seja chamado sem filtro
+            sb.append("SELECT e FROM Tarefa e WHERE e.excluida = false");
             if (id != null) sb.append(" AND e.id = :id");
             if (titulo != null) sb.append(" AND e.titulo = :titulo");
             if (descricao != null) sb.append(" AND e.descricao = :descricao");
@@ -86,4 +86,5 @@ public class TarefaRepository extends BaseRepository<Tarefa> {
             em.close();
         }
     }
+
 }
