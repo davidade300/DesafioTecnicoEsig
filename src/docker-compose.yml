@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres
+    container_name: tarefa-postgres
+    environment:
+      POSTGRES_DB: tarefadb
+      POSTGRES_USER: tarefa
+      POSTGRES_PASSWORD: tarefa
+    ports:
+      - "5432:5432"

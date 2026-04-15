@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<h:head>
+    <title>Cadastrar Tarefa</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        Título: <h:inputText value="#{tarefa.titulo}"/>
+        <br/>
+        Descrição: <h:inputText value="#{tarefa.descricao}"/>
+        <br/>
+        Responsável: <h:inputText value="#{tarefa.responsavel}"/>
+        <br/>
+        Prioridade: <h:inputText value="#{tarefa.prioridade}"/>
+        <br/>
+        Deadline: <h:inputText value="#{tarefa.deadline}"/>
+        <br/>
+        Situação: <h:inputText value="#{tarefa.situacao}"/>
+        <br/>
+        <h:commandButton value="Cadastrar" action="#{tarefaRepository.addTarefa(tarefa)}"/>
+        <h:commandButton value="Cadastrar2" action="ListarTarefas"/>
+    </h:form>
+</h:body>
+
+</html>
