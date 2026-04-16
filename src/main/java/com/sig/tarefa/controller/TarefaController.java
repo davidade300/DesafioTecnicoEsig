@@ -47,10 +47,7 @@ public class TarefaController implements Serializable {
     }
 
     public void buscaFiltrada() {
-        Responsavel r = null;
-        if (filtroResponsavelId != null) {
-            r = responsavelService.buscaPorId(filtroResponsavelId);
-        }
+        Responsavel r = responsavelService.buscaPorId(filtroResponsavelId);
         this.tarefas = service.buscaFiltrada(filtroId, filtroTitulo, r, filtroSituacao);
     }
 
@@ -73,6 +70,9 @@ public class TarefaController implements Serializable {
     public String editar() {
         service.atualizar(tarefa);
         return "listarTarefas";
+    }
+    public String gotoCadastrarResponsavel() {
+        return "cadastroDeResponsaveis";
     }
 
     public String gotoCadastrarTarefa() {

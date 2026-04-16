@@ -11,12 +11,10 @@ public class ResponsavelRepository extends BaseRepository<Responsavel> {
     }
 
     public Responsavel buscaPorId(Long id) {
+        if (id == null) return null;
         EntityManager em = super.getEmf();
         try {
-            em.getTransaction().begin();
-            Responsavel result = em.find(Responsavel.class, id);
-            em.getTransaction().commit();
-            return result;
+            return em.find(Responsavel.class, id);
         } finally {
             em.close();
         }

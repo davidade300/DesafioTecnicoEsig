@@ -12,10 +12,12 @@
 </h:head>
 <h:body>
     <h:form>
+        <h:messages globalOnly="false" style="color: red;"/>
         <h1 class="center-text">Cadastrar Tarefa</h1>
         <div class="form-group">
             <label>Título:</label>
-            <h:inputText value="#{tarefaController.tarefa.titulo}"/>
+            <h:inputText value="#{tarefaController.tarefa.titulo}" required="true"
+                         requiredMessage="titulo é obrigatório"/>
         </div>
         <div class="form-group">
             <label>Descrição:</label>
@@ -23,13 +25,15 @@
         </div>
         <div class="form-group">
             <label>Responsável:</label>
-            <h:selectOneMenu value="#{tarefaController.responsavelSelecionadoId}">
+            <h:selectOneMenu value="#{tarefaController.responsavelSelecionadoId}" required="true"
+                             requiredMessage="responsavel é obrigatório">
                 <f:selectItem itemLabel="Select" itemValue=""/>
                 <f:selectItems value="#{tarefaController.responsaveis}" var="r"
                                itemLabel="#{r.nome}" itemValue="#{r.id}"/>
             </h:selectOneMenu>
             <label>Prioridade:</label>
-            <h:selectOneMenu value="#{tarefaController.tarefa.prioridade}">
+            <h:selectOneMenu value="#{tarefaController.tarefa.prioridade}" required="true"
+                             requiredMessage="prioridade é obrigatório">
                 <f:selectItem itemLabel="Select" itemValue=""/>
                 <f:selectItems value="#{tarefaController.prioridades}" var="p"
                                itemLabel="#{p.name()}" itemValue="#{p}"/>
@@ -37,14 +41,19 @@
         </div>
         <div class="form-group">
             <label>Deadline:</label>
-            <h:inputText value="#{tarefaController.tarefa.deadline}" pt:type="date"
+            <h:inputText value="#{tarefaController.tarefa.deadline}" pt:type="date" required="true"
+                         requiredMessage="data é obrigatório"
                          xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
                 <f:convertDateTime pattern="yyyy-MM-dd"/>
             </h:inputText>
         </div>
         <div class="form-group">
             <h:commandButton styleClass="btn" value="Cadastrar" action="#{tarefaController.salvar}"/>
-            <h:commandButton styleClass="btn" value="Listar Tarefas" action="#{tarefaController.gotoListarTarefas}"/>
+            <h:commandButton styleClass="btn" value="Listar Tarefas" action="#{tarefaController.gotoListarTarefas}"
+                             immediate="true"/>
+            <h:commandButton styleClass="btn" value="Cadastrar Responsavel"
+                             action="#{tarefaController.gotoCadastrarResponsavel}"
+                             immediate="true"/>
         </div>
     </h:form>
 </h:body>

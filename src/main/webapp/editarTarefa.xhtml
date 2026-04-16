@@ -3,14 +3,47 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <title>Editar Tarefa</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
 </h:head>
-
 <h:body>
-
+    <h:form>
+        <h1 class="center-text">Editar Tarefa</h1>
+        <div class="form-group">
+            <label>Título:</label>
+            <h:inputText value="#{tarefaController.tarefa.titulo}"/>
+        </div>
+        <div class="form-group">
+            <label>Descrição:</label>
+            <h:inputTextarea value="#{tarefaController.tarefa.descricao}" rows="4" cols="40"/>
+        </div>
+        <div class="form-group">
+            <label>Responsável:</label>
+            <h:selectOneMenu value="#{tarefaController.responsavelSelecionadoId}">
+                <f:selectItem itemLabel="Select" itemValue=""/>
+                <f:selectItems value="#{tarefaController.responsaveis}" var="r"
+                               itemLabel="#{r.nome}" itemValue="#{r.id}"/>
+            </h:selectOneMenu>
+            <label>Prioridade:</label>
+            <h:selectOneMenu value="#{tarefaController.tarefa.prioridade}">
+                <f:selectItem itemLabel="Select" itemValue=""/>
+                <f:selectItems value="#{tarefaController.prioridades}" var="p"
+                               itemLabel="#{p.name()}" itemValue="#{p}"/>
+            </h:selectOneMenu>
+        </div>
+        <div class="form-group">
+            <label>Deadline:</label>
+            <h:inputText value="#{tarefaController.tarefa.deadline}" pt:type="date">
+                <f:convertDateTime pattern="yyyy-MM-dd"/>
+            </h:inputText>
+        </div>
+        <div class="form-group">
+            <h:commandButton styleClass="btn" value="Salvar" action="#{tarefaController.editar}"/>
+            <h:commandButton styleClass="btn" value="Cancelar" action="#{tarefaController.gotoListarTarefas}"/>
+        </div>
+    </h:form>
 </h:body>
-
 </html>

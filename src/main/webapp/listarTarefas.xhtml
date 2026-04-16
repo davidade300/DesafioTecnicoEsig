@@ -54,11 +54,11 @@
             <h:column>
                 <f:facet name="header">Ações</f:facet>
                 <h:form>
-                    <h:commandLink value="Editar" action="#{tarefaController.gotoEditarTarefa(t)}"/>
+                    <h:commandLink styleClass="links" value="Editar" action="#{tarefaController.gotoEditarTarefa(t)}"/>
                     |
-                    <h:commandLink value="Excluir" action="#{tarefaController.excluir(t)}"/>
+                    <h:commandLink styleClass="links" value="Excluir" action="#{tarefaController.excluir(t)}"/>
                     |
-                    <h:commandLink value="Concluir" action="#{tarefaController.concluir(t)}"/>
+                    <h:commandLink styleClass="links" value="Concluir" action="#{tarefaController.concluir(t)}"/>
                 </h:form>
             </h:column>
         </h:dataTable>

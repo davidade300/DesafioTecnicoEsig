@@ -56,3 +56,9 @@ body {
     text-align: right;
     min-width: 100px;
 }
+
+.links {
+    text-decoration: none;
+    color: inherit;
+
+}
