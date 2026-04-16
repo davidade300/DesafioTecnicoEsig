@@ -7,30 +7,34 @@
 
 <h:head>
     <title>Cadastro de Responsaveis</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
 </h:head>
 
 <h:body>
-    <h1> Cadastrar Responsavel</h1>
+    <div class="container">
+        <h1 class="center-text"> Cadastrar Responsavel</h1>
 
-    <h:form>
-        Nome: <h:inputText value="#{responsavelController.responsavel.nome}"/>
-        <br/>
-        <h:commandButton value="Salvar" action="#{responsavelController.salvar}"/>
-        <h:commandButton value="Cadastro de tarefas" action="#{responsavelController.gotoCadastrarTarefa}"/>
-    </h:form>
+        <h:form>
+            Nome: <h:inputText value="#{responsavelController.responsavel.nome}"/>
+            <br/>
+            <h:commandButton styleClass="btn" value="Salvar" action="#{responsavelController.salvar}"/>
+            <h:commandButton styleClass="btn" value="Cadastro de tarefas"
+                             action="#{responsavelController.gotoCadastrarTarefa}"/>
+        </h:form>
 
-    <h2>Responsaveis Cadastrados</h2>
-    <h:dataTable value="#{responsavelController.responsaveis}" var="r" border="1">
-        <h:column>
-            <f:facet name="header">ID</f:facet>
-            <h:outputText value="#{r.id}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">Nome</f:facet>
-            <h:outputText value="#{r.nome}"/>
-        </h:column>
+        <h2 class="center-text">Responsaveis Cadastrados</h2>
+        <h:dataTable value="#{responsavelController.responsaveis}" var="r" border="1">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{r.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{r.nome}"/>
+            </h:column>
 
-    </h:dataTable>
+        </h:dataTable>
+    </div>
 </h:body>
 
 </html>
