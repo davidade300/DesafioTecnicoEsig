@@ -35,13 +35,11 @@ public class TarefaService {
 
     public List<Tarefa> buscaFiltrada(Long id,
                                       String titulo,
-                                      String descricao,
                                       Responsavel responsavel,
                                       Situacao situacao) {
 
         return repository.filtrar(id,
                 titulo,
-                descricao,
                 responsavel,
                 situacao);
     }

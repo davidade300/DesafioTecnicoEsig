@@ -5,7 +5,7 @@
 
 .container {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 900px;
     text-align: center;
 }
 
@@ -22,6 +22,7 @@ body {
 .dataTable {
     width: 75%;
     margin: 0 auto;
+    border: 1px solid #ccc;
 }
 
 .dataTable thead tr, .dataTable th {
@@ -40,5 +41,18 @@ body {
 
 .dataTable td {
     padding: 8px;
+    border: 1px solid #ccc;
 }
 
+.form-group {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group label {
+    text-align: right;
+    min-width: 100px;
+}

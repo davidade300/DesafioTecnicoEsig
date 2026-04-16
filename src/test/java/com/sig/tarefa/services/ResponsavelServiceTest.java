@@ -43,4 +43,14 @@ class ResponsavelServiceTest {
         assertEquals(2, resultado.size());
         verify(repository).listarTodos();
     }
+
+    @Test
+    void buscaPorId() {
+        Responsavel r = new Responsavel();
+        when(repository.buscaPorId(1L)).thenReturn(r);
+
+        Responsavel result = service.buscaPorId(1L);
+
+        verify(repository).buscaPorId(1L);
+    }
 }

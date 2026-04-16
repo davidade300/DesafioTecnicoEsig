@@ -74,12 +74,12 @@ class TarefaServiceTest {
     @Test
     void buscaFiltrada() {
         List<Tarefa> tarefas = List.of(new Tarefa());
-        when(repository.filtrar(null, "Titulo", null, null, null)).thenReturn(tarefas);
+        when(repository.filtrar(null, "Titulo", null, null)).thenReturn(tarefas);
 
-        List<Tarefa> resultado = service.buscaFiltrada(null, "Titulo", null, null, null);
+        List<Tarefa> resultado = service.buscaFiltrada(null, "Titulo", null, null);
 
         assertEquals(1, resultado.size());
-        verify(repository).filtrar(null, "Titulo", null, null, null);
+        verify(repository).filtrar(null, "Titulo", null, null);
     }
 
     @Test

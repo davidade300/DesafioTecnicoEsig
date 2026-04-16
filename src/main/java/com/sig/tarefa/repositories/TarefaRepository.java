@@ -36,14 +36,12 @@ public class TarefaRepository extends BaseRepository<Tarefa> {
      *
      * @param id          numero da tarefa a ser buscada
      * @param titulo      titulo da tarefa a ser buscada
-     * @param descricao   descricao da tarefa a ser buscada
      * @param responsavel responsavel da tarefa a ser buscada
      * @param situacao    situacao da tarefa a ser buscada
      * @return lista de tarefa de acordo com os criterios
      */
     public List<Tarefa> filtrar(Long id,
                                 String titulo,
-                                String descricao,
                                 Responsavel responsavel,
                                 Situacao situacao) {
 
@@ -52,16 +50,15 @@ public class TarefaRepository extends BaseRepository<Tarefa> {
             StringBuilder sb = new StringBuilder();
             sb.append("SELECT e FROM Tarefa e WHERE e.excluida = false");
             if (id != null) sb.append(" AND e.id = :id");
-            if (titulo != null) sb.append(" AND e.titulo = :titulo");
-            if (descricao != null) sb.append(" AND e.descricao = :descricao");
+            if (titulo != null && !titulo.isEmpty())
+                sb.append(" AND (e.titulo LIKE :titulo OR e.descricao LIKE :titulo)");
             if (responsavel != null) sb.append(" AND e.responsavel = :responsavel");
             if (situacao != null) sb.append(" AND e.situacao = :situacao");
 
             var result = em.createQuery(sb.toString(), Tarefa.class);
 
             if (id != null) result.setParameter("id", id);
-            if (titulo != null) result.setParameter("titulo", titulo);
-            if (descricao != null) result.setParameter("descricao", descricao);
+            if (titulo != null && !titulo.isEmpty()) result.setParameter("titulo", "%" + titulo + "%");
             if (responsavel != null) result.setParameter("responsavel", responsavel);
             if (situacao != null) result.setParameter("situacao", situacao);
 

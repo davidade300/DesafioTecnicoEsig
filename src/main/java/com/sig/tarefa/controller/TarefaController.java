@@ -21,30 +21,37 @@ public class TarefaController implements Serializable {
 
     private Long filtroId;
     private String filtroTitulo;
-    private String filtroDesc;
-    private Responsavel filtroResponsavel;
+    private Long filtroResponsavelId;
     private Situacao filtroSituacao;
 
     private Tarefa tarefa = new Tarefa();
+    private Long responsavelSelecionadoId;
+
     private final TarefaService service = new TarefaService(new TarefaRepository());
     private final ResponsavelService responsavelService = new ResponsavelService(new ResponsavelRepository());
+
     private List<Tarefa> tarefas;
 
-    private Long responsavelId;
-
     public TarefaController() {
-        this.tarefas = service.buscaFiltrada(null, null, null, null, null);
+        this.tarefas = service.buscaFiltrada(null, null, null, null);
     }
 
     public void salvar() {
-        Responsavel r = responsavelService.buscaPorId(responsavelId);
-        tarefa.setResponsavel(r);
+        if (responsavelSelecionadoId != null) {
+            Responsavel r = responsavelService.buscaPorId(responsavelSelecionadoId);
+            tarefa.setResponsavel(r);
+        }
         service.salvar(tarefa);
         tarefa = new Tarefa();
+        responsavelSelecionadoId = null;
     }
 
     public void buscaFiltrada() {
-        this.tarefas = service.buscaFiltrada(filtroId, filtroTitulo, filtroDesc, filtroResponsavel, filtroSituacao);
+        Responsavel r = null;
+        if (filtroResponsavelId != null) {
+            r = responsavelService.buscaPorId(filtroResponsavelId);
+        }
+        this.tarefas = service.buscaFiltrada(filtroId, filtroTitulo, r, filtroSituacao);
     }
 
     public void concluir(Tarefa t) {
@@ -76,12 +83,20 @@ public class TarefaController implements Serializable {
         return "listarTarefas";
     }
 
-    public Long getResponsavelId() {
-        return responsavelId;
+    public Long getFiltroResponsavelId() {
+        return filtroResponsavelId;
     }
 
-    public void setResponsavelId(Long responsavelId) {
-        this.responsavelId = responsavelId;
+    public void setFiltroResponsavelId(Long filtroResponsavelId) {
+        this.filtroResponsavelId = filtroResponsavelId;
+    }
+
+    public Long getResponsavelSelecionadoId() {
+        return responsavelSelecionadoId;
+    }
+
+    public void setResponsavelSelecionadoId(Long responsavelSelecionadoId) {
+        this.responsavelSelecionadoId = responsavelSelecionadoId;
     }
 
     public List<Responsavel> getResponsaveis() {
@@ -90,6 +105,10 @@ public class TarefaController implements Serializable {
 
     public Prioridade[] getPrioridades() {
         return Prioridade.values();
+    }
+
+    public Situacao[] getSituacoes() {
+        return Situacao.values();
     }
 
     public Long getFiltroId() {
@@ -108,21 +127,6 @@ public class TarefaController implements Serializable {
         this.filtroTitulo = filtroTitulo;
     }
 
-    public String getFiltroDesc() {
-        return filtroDesc;
-    }
-
-    public void setFiltroDesc(String filtroDesc) {
-        this.filtroDesc = filtroDesc;
-    }
-
-    public Responsavel getFiltroResponsavel() {
-        return filtroResponsavel;
-    }
-
-    public void setFiltroResponsavel(Responsavel filtroResponsavel) {
-        this.filtroResponsavel = filtroResponsavel;
-    }
 
     public Situacao getFiltroSituacao() {
         return filtroSituacao;
@@ -148,6 +152,5 @@ public class TarefaController implements Serializable {
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
-
 
 }
