@@ -32,10 +32,6 @@ public class TarefaController implements Serializable {
 
     private List<Tarefa> tarefas;
 
-    public TarefaController() {
-        this.tarefas = service.buscaFiltrada(null, null, null, null);
-    }
-
     public void salvar() {
         if (responsavelSelecionadoId != null) {
             Responsavel r = responsavelService.buscaPorId(responsavelSelecionadoId);
@@ -44,7 +40,7 @@ public class TarefaController implements Serializable {
         service.salvar(tarefa);
         tarefa = new Tarefa();
         responsavelSelecionadoId = null;
-//        tarefas=null;
+        tarefas = null;
     }
 
     public void buscaFiltrada() {
@@ -70,7 +66,7 @@ public class TarefaController implements Serializable {
 
     public String editar() {
         service.atualizar(tarefa);
-//        tarefas = null;
+        tarefas = null;
         return "listarTarefas";
     }
 
