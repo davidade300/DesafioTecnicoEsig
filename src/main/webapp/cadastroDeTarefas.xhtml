@@ -3,14 +3,63 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+>
 <h:head>
     <title>Cadastrar Tarefa</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
 </h:head>
-
 <h:body>
-
+    <div class="container">
+        <h1 class="center-text">Cadastrar Tarefa</h1>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Título:</td>
+                    <td colspan="3"><h:inputText value="#{tarefaController.tarefa.titulo}"/></td>
+                </tr>
+                <tr>
+                    <td>Descrição:</td>
+                    <td colspan="3"><h:inputTextarea value="#{tarefaController.tarefa.descricao}" rows="4" cols="40"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Responsável:</td>
+                    <td>
+                        <h:selectOneMenu value="#{tarefaController.responsavelId}">
+                            <f:selectItem itemLabel="Select" itemValue=""/>
+                            <f:selectItems value="#{tarefaController.responsaveis}" var="r"
+                                           itemLabel="#{r.nome}" itemValue="#{r.id}"/>
+                        </h:selectOneMenu>
+                    </td>
+                    <td>Prioridade:</td>
+                    <td>
+                        <h:selectOneMenu value="#{tarefaController.tarefa.prioridade}">
+                            <f:selectItem itemLabel="Select" itemValue=""/>
+                            <f:selectItems value="#{tarefaController.prioridades}" var="p"
+                                           itemLabel="#{p.name()}" itemValue="#{p}"/>
+                        </h:selectOneMenu>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Deadline:</td>
+                    <td colspan="3">
+                        <h:inputText type="date" value="#{tarefaController.tarefa.deadline}"
+                                     pt:type="date">
+                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        </h:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center">
+                        <h:commandButton styleClass="btn" value="Cadastrar" action="#{tarefaController.salvar}"/>
+                        <h:commandButton styleClass="btn" value="Listar Tarefas"
+                                         action="#{tarefaController.gotoListarTarefas}"/>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+    </div>
 </h:body>
-
 </html>

@@ -21,4 +21,7 @@ public class ResponsavelService {
         return repository.listarTodos();
     }
 
+    public Responsavel buscaPorId(Long id) {
+        return repository.buscaPorId(id);
+    }
 }

@@ -4,7 +4,7 @@ import com.sig.tarefa.model.enums.Prioridade;
 import com.sig.tarefa.model.enums.Situacao;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
@@ -38,6 +38,10 @@ public class Tarefa {
     @Column(nullable = false)
     private boolean excluida;
 
+    @Temporal(TemporalType.DATE)
+    private Date deadline;
+
+
     public boolean isExcluida() {
         return excluida;
     }
@@ -46,7 +50,6 @@ public class Tarefa {
         this.excluida = excluida;
     }
 
-    private LocalDate deadline;
 
     public Tarefa() {
         this.situacao = Situacao.EM_ANDAMENTO;
@@ -100,11 +103,11 @@ public class Tarefa {
         this.situacao = situacao;
     }
 
-    public LocalDate getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(LocalDate deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 

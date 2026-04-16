@@ -30,11 +30,15 @@ public class TarefaController implements Serializable {
     private final ResponsavelService responsavelService = new ResponsavelService(new ResponsavelRepository());
     private List<Tarefa> tarefas;
 
+    private Long responsavelId;
+
     public TarefaController() {
         this.tarefas = service.buscaFiltrada(null, null, null, null, null);
     }
 
     public void salvar() {
+        Responsavel r = responsavelService.buscaPorId(responsavelId);
+        tarefa.setResponsavel(r);
         service.salvar(tarefa);
         tarefa = new Tarefa();
     }
@@ -70,6 +74,14 @@ public class TarefaController implements Serializable {
 
     public String gotoListarTarefas() {
         return "listarTarefas";
+    }
+
+    public Long getResponsavelId() {
+        return responsavelId;
+    }
+
+    public void setResponsavelId(Long responsavelId) {
+        this.responsavelId = responsavelId;
     }
 
     public List<Responsavel> getResponsaveis() {
