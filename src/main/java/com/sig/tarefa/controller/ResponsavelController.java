@@ -32,8 +32,8 @@ public class ResponsavelController {
         this.responsavel = responsavel;
     }
 
-    public String gotoListarTarefas() {
-        return "listarTarefas";
+    public String gotoCadastrarTarefa() {
+        return "cadastroDeTarefas";
     }
 
     public String gotoCadastrarResponsavel() {
