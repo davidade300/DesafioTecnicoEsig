@@ -31,4 +31,12 @@ public class ResponsavelController {
     public void setResponsavel(Responsavel responsavel) {
         this.responsavel = responsavel;
     }
+
+    public String gotoListarTarefas() {
+        return "listarTarefas";
+    }
+
+    public String gotoCadastrarResponsavel() {
+        return "cadastroDeResponsaveis";
+    }
 }

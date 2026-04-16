@@ -64,6 +64,14 @@ public class TarefaController implements Serializable {
         return "listarTarefas";
     }
 
+    public String gotoCadastrarTarefa() {
+        return "cadastroDeTarefas";
+    }
+
+    public String gotoListarTarefas() {
+        return "listarTarefas";
+    }
+
     public List<Responsavel> getResponsaveis() {
         return responsavelService.listarTodos();
     }
