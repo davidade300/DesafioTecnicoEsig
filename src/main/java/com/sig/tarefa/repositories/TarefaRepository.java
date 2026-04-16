@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 public class TarefaRepository extends BaseRepository<Tarefa> {
-    protected TarefaRepository() {
+    public TarefaRepository() {
         super(Tarefa.class);
     }
 

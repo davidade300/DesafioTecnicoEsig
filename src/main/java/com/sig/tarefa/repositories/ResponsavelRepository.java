@@ -4,7 +4,7 @@ import com.sig.tarefa.model.Responsavel;
 
 public class ResponsavelRepository extends BaseRepository<Responsavel> {
 
-    protected ResponsavelRepository() {
+    public ResponsavelRepository() {
         super(Responsavel.class);
     }
 }
