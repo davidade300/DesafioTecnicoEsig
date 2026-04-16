@@ -17,6 +17,7 @@
         <junit.version>5.10.2</junit.version>
     </properties>
 
+
     <dependencies>
         <dependency>
             <groupId>javax.faces</groupId>
@@ -100,6 +101,7 @@
 
 
     <build>
+        <finalName>sigtarefa</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
