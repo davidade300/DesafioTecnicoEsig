@@ -1,24 +1,48 @@
-### Estrutura do Projeto
+# Sistema de Gestão de Tarefas - Desafio Técnico ESIG Group
 
-- Decidi fazer o projeto seguindo uma estrutura de arquitetura de camadas, utilizando hibernate para fazer o mapeamento
-  objeto relacional das entidades, repositorios para isolar o acesso a dados e service para orquestrar os repositórios.
+Aplicação web de gerenciamento de tarefas desenvolvida como parte do processo seletivo da ESIG Group.
 
-### Rodando o projeto Localmente:
+## Itens Implementados:
 
-- Basta instalar o servidor Apache tomcat 9:
-  > https://tomcat.apache.org/download-90.cgi
-- ....
+- **a)** Aplicação Java Web utilizando JavaServer Faces (JSF), sei que nao houve especficacao e que jakarta faces e jsf
+  sao basicamente a mesma coisa, mas optei por jsf 2.23.
+- **b)** Persistência em banco de dados Postgres.
+- **c)** Compliance jpa com Hibernate como implementação
+- **d)** Testes de unidade com JUnit 5 e Mockito
 
-# TODOS :
+## Funcionalidades
 
-- Criar views
+- Cadastro e listagem de responsáveis.
+- Cadastro de tarefas com título, descrição, responsável, prioridade e deadline.
+- Listagem de tarefas com filtros por número, título/descrição, responsável e situação.
+- Edição de tarefas.
+- Soft delete de tarefas.
+- Conclusão de tarefas.
 
-- criar os arquivos de view de acordo com os nomes retornados nos metodos do controller de Tarefa.
+## Tecnologias
 
-### Notas:
+- Java 21
+- JavaServer Faces (JSF) 2.3 + Mojarra
+- Hibernate
+- PostgreSQL
+- Weld
+- JUnit + Mockito
+- Apache Tomcat 9.0
+- Maven
+- Docker
 
-- Deixei a exclusão como softDelete.
-- Pulei a documentação de algumas coisas por questão de tempo disponível para entrega do projeto. Procurei documentar
-  tudo que acho de maior relevância, seja método ou classe.
+## Pré-requisitos
 
-#    
+- Java 21
+- Maven
+- Docker e Docker Compose
+
+## Execução rápida
+
+```bash
+chmod +x run.sh
+./run.sh
+```
+
+Aguarde alguns segundos e acesse:
+http://localhost:8080/sigtarefa/cadastroDeResponsaveis.xhtml

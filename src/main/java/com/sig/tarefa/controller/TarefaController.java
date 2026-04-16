@@ -44,6 +44,7 @@ public class TarefaController implements Serializable {
         service.salvar(tarefa);
         tarefa = new Tarefa();
         responsavelSelecionadoId = null;
+//        tarefas=null;
     }
 
     public void buscaFiltrada() {
@@ -69,8 +70,10 @@ public class TarefaController implements Serializable {
 
     public String editar() {
         service.atualizar(tarefa);
+//        tarefas = null;
         return "listarTarefas";
     }
+
     public String gotoCadastrarResponsavel() {
         return "cadastroDeResponsaveis";
     }
@@ -146,6 +149,9 @@ public class TarefaController implements Serializable {
 
 
     public List<Tarefa> getTarefas() {
+        if (tarefas == null) {
+            buscaFiltrada();
+        }
         return tarefas;
     }
 

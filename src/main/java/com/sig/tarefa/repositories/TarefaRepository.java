@@ -19,7 +19,7 @@ public class TarefaRepository extends BaseRepository<Tarefa> {
      * @return tarefa com o id == id passado.
      */
     public Tarefa buscaPorId(Long id) {
-        if (id == null) return  null;
+        if (id == null) return null;
         EntityManager em = super.getEmf();
         try {
             return em.find(Tarefa.class, id);
@@ -46,12 +46,17 @@ public class TarefaRepository extends BaseRepository<Tarefa> {
         EntityManager em = super.getEmf();
         try {
             StringBuilder sb = new StringBuilder();
-            sb.append("SELECT e FROM Tarefa e WHERE e.excluida = false");
+            sb.append("SELECT e FROM Tarefa e WHERE e.excluida = false ");
             if (id != null) sb.append(" AND e.id = :id");
             if (titulo != null && !titulo.isEmpty())
                 sb.append(" AND (e.titulo LIKE :titulo OR e.descricao LIKE :titulo)");
             if (responsavel != null) sb.append(" AND e.responsavel = :responsavel");
-            if (situacao != null) sb.append(" AND e.situacao = :situacao");
+            if (situacao != null) {
+                sb.append(" AND e.situacao = :situacao");
+            } else {
+                sb.append(" AND e.situacao = 'EM_ANDAMENTO'");
+            }
+
 
             var result = em.createQuery(sb.toString(), Tarefa.class);
 
