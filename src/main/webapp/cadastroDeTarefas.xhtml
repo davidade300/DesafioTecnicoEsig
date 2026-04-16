@@ -11,55 +11,41 @@
     <h:outputStylesheet library="css" name="styles.css"/>
 </h:head>
 <h:body>
-    <div class="container">
+    <h:form>
         <h1 class="center-text">Cadastrar Tarefa</h1>
-        <h:form>
-            <table>
-                <tr>
-                    <td>Título:</td>
-                    <td colspan="3"><h:inputText value="#{tarefaController.tarefa.titulo}"/></td>
-                </tr>
-                <tr>
-                    <td>Descrição:</td>
-                    <td colspan="3"><h:inputTextarea value="#{tarefaController.tarefa.descricao}" rows="4" cols="40"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Responsável:</td>
-                    <td>
-                        <h:selectOneMenu value="#{tarefaController.responsavelId}">
-                            <f:selectItem itemLabel="Select" itemValue=""/>
-                            <f:selectItems value="#{tarefaController.responsaveis}" var="r"
-                                           itemLabel="#{r.nome}" itemValue="#{r.id}"/>
-                        </h:selectOneMenu>
-                    </td>
-                    <td>Prioridade:</td>
-                    <td>
-                        <h:selectOneMenu value="#{tarefaController.tarefa.prioridade}">
-                            <f:selectItem itemLabel="Select" itemValue=""/>
-                            <f:selectItems value="#{tarefaController.prioridades}" var="p"
-                                           itemLabel="#{p.name()}" itemValue="#{p}"/>
-                        </h:selectOneMenu>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Deadline:</td>
-                    <td colspan="3">
-                        <h:inputText type="date" value="#{tarefaController.tarefa.deadline}"
-                                     pt:type="date">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
-                        </h:inputText>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4" style="text-align: center">
-                        <h:commandButton styleClass="btn" value="Cadastrar" action="#{tarefaController.salvar}"/>
-                        <h:commandButton styleClass="btn" value="Listar Tarefas"
-                                         action="#{tarefaController.gotoListarTarefas}"/>
-                    </td>
-                </tr>
-            </table>
-        </h:form>
-    </div>
+        <div class="form-group">
+            <label>Título:</label>
+            <h:inputText value="#{tarefaController.tarefa.titulo}"/>
+        </div>
+        <div class="form-group">
+            <label>Descrição:</label>
+            <h:inputTextarea value="#{tarefaController.tarefa.descricao}" rows="4" cols="40"/>
+        </div>
+        <div class="form-group">
+            <label>Responsável:</label>
+            <h:selectOneMenu value="#{tarefaController.responsavelSelecionadoId}">
+                <f:selectItem itemLabel="Select" itemValue=""/>
+                <f:selectItems value="#{tarefaController.responsaveis}" var="r"
+                               itemLabel="#{r.nome}" itemValue="#{r.id}"/>
+            </h:selectOneMenu>
+            <label>Prioridade:</label>
+            <h:selectOneMenu value="#{tarefaController.tarefa.prioridade}">
+                <f:selectItem itemLabel="Select" itemValue=""/>
+                <f:selectItems value="#{tarefaController.prioridades}" var="p"
+                               itemLabel="#{p.name()}" itemValue="#{p}"/>
+            </h:selectOneMenu>
+        </div>
+        <div class="form-group">
+            <label>Deadline:</label>
+            <h:inputText value="#{tarefaController.tarefa.deadline}" pt:type="date"
+                         xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+                <f:convertDateTime pattern="yyyy-MM-dd"/>
+            </h:inputText>
+        </div>
+        <div class="form-group">
+            <h:commandButton styleClass="btn" value="Cadastrar" action="#{tarefaController.salvar}"/>
+            <h:commandButton styleClass="btn" value="Listar Tarefas" action="#{tarefaController.gotoListarTarefas}"/>
+        </div>
+    </h:form>
 </h:body>
 </html>
