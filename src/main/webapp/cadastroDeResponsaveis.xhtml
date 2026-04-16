@@ -23,7 +23,7 @@
         </h:form>
 
         <h2 class="center-text">Responsaveis Cadastrados</h2>
-        <h:dataTable value="#{responsavelController.responsaveis}" var="r" border="1">
+        <h:dataTable styleClass="dataTable" value="#{responsavelController.responsaveis}" var="r" border="1">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{r.id}"/>

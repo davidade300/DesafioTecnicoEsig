@@ -18,3 +18,27 @@ body {
     padding: 5px;
     margin: 10px;
 }
+
+.dataTable, table {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.dataTable thead tr, .dataTable th {
+    background-color: #A9A9A9FF;
+    color: #FFF;
+    padding: 5px;
+}
+
+.dataTable tbody tr:nth-child(odd) {
+    background-color: #FFF;
+}
+
+.dataTable tbody tr:nth-child(even) {
+    background-color: #e0e0e0;
+}
+
+.dataTable td {
+    padding: 8px;
+}
+
