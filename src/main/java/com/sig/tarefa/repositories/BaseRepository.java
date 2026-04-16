@@ -8,7 +8,7 @@ import java.util.List;
 public class BaseRepository<T> {
 
     private final Class<T> classe;
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("tarefa_db");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("tarefadb");
 
     protected BaseRepository(Class<T> classe) {
         this.classe = classe;
